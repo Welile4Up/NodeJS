@@ -18,10 +18,7 @@ const mongoose = require("mongoose");
 const Subscriber = require("./models/subscriber");
 
 // Connect to the MongoDB database "recipe_db" using Mongoose
-mongoose.connect(
-    "mongodb://localhost:27017/recipe_db",
-    { useNewUrlParser: true, useUnifiedTopology: true }
-);
+mongoose.connect("mongodb://localhost:27017/recipe_db");
 
 // Get the default database connection
 const db = mongoose.connection;
@@ -33,33 +30,39 @@ db.once("open", () => {
 
 // // Example to create a new subscriber using the save method
 // const subscriber1 = new Subscriber({
-//     name: "Jon Wexler",
-//     email: "jon@jonwexler.com",
+//     name: "Marks Maponya",
+//     email: "marks@marksmap.com",
 // });
 
-// subscriber1.save((error, savedDocument) => {
-//     if (error) {
-//         console.log(error);
-//     } else {
-//         console.log("Saved subscriber using save method:", savedDocument);
-//     }
-// });
+// async function run() {
+//   try {
+//     const savedDocument = await subscriber1.save();
+//     console.log("Saved subscriber using save method:", savedDocument);
+//   } catch (error) {
+//     console.error("Error saving subscriber:", error);
+//   }
+// }
+
+// run();
 
 // // Example to create a new subscriber using the create method
-// Subscriber.create({
-//     name: "Jack Wexler",
-//     email: "jack@jonwexler.com",
-// }, (error, savedDocument) => {
-//     if (error) {
-//         console.log(error);
-//     } else {
-//         console.log("Saved subscriber using create method:", savedDocument);
-//     }
-// });
+// async function run() {
+//   try {
+//     const savedDocument = await Subscriber.create({
+//       name: "Maggy Maponya",
+//       email: "maggy@maggymap.com",
+//     });
+//     console.log("Saved subscriber using create method:", savedDocument);
+//   } catch (error) {
+//     console.error("Error creating subscriber:", error);
+//   }
+// }
 
-// Example query to find "Welile Ray" with "weza" in the email and log the name
-var myQuery = Subscriber.findOne({ name: "Welile Ray" })
-    .where("email", /weza/);
+// run()
+
+// Example query to find "Marks Maponya" with "marks" in the email and log the name
+var myQuery = Subscriber.findOne({ name: "Marks Maponya" })
+    .where("email", /marks/);
 
 myQuery.exec()
   .then(data => {
